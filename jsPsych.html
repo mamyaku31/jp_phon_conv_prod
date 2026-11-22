@@ -140,7 +140,7 @@ var end_info = {
 var instruction = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: '<p>あなたが本実験で行う作業は\
-  <strong>画面に表示されたことばを発音する</strong>ことです。<br>発音する際には\
+  <strong>画面に表示されたことばを<font color="red">３回</font>発音する</strong>ことです。<br>発音する際には\
   あなたの方言・ことばでお話しください。<br><strong>ふだん仲の良い地元の友達に話すように</strong>\
   発音しましょう。<br>また、音声を録音するため、この作業は<strong>他の人やテレビの音のない静かな部屋</strong>\
   で行ってください。またあなたのコンピューターのマイクで録音します。<strong>次の画面でマイクの許可を求めますので必ず\
@@ -164,8 +164,8 @@ const test = {
   preamble: "<p>実験の手順について確認します。先ほど見たあなたがこの作業で行う内容に関する問題です。</p>",
   questions: [{
     prompt: "この実験で行う内容について正しいものを選んでください。",
-    options: ["音声を聞いてそれを真似しなくてはいけない。",
-      "画面に表示されたことばを発音しなくてはいけない。"],
+    options: ["画面に出てきた単語を１回だけ発音する。",
+      "画面に出てきた単語を３回繰り返し発音する。"],
     required: true,
     name: "audio_understand",
   },
@@ -192,7 +192,7 @@ const test = {
 
     testAccuracy = 0;
 
-    testAccuracy += Number(data.response["audio_understand"] === "画面に表示されたことばを発音しなくてはいけない。");
+    testAccuracy += Number(data.response["audio_understand"] === "画面に出てきた単語を３回繰り返し発音する。");
     testAccuracy += Number(data.response["task_understand"] === "家族やテレビの音が一切聞こえない静かな部屋でコンピュータのマイクを許可する。");
     testAccuracy += Number(data.response["nonce_understand"] === "仲のいい地元の友達と話す時のように話す。");
 
