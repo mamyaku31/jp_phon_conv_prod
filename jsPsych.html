@@ -42,9 +42,6 @@ const jsPsych = initJsPsych({
   }
 });
 
-// Generate participant ID before initializing jsPsych
-const subject_id = jsPsych.randomization.randomID(10);
-
 const images = ['image/bunshou.png', 'image/butaniku.png', 'image/hikouki.png', 'image/hukurou.png', 'image/kutusita.png',
   'image/rirekisho.png', 'image/saiban.png', 'image/sinjitu.png', 'image/sintai.png', 'image/tamasii.png', 'image/tatemono.png',
   'image/unmei.png', 'image/wakamono.png', 'image/yuiitu.png', 'image/yuurei.png'
@@ -601,6 +598,9 @@ var goodbye = {
   choices: ['実験を終了する。'],
   response_ends_trial: true,
 };
+
+// Generate participant ID before initializing jsPsych
+const subject_id = jsPsych.randomization.randomID(10);
 
 
 
