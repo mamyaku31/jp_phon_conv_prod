@@ -24,13 +24,7 @@
   <script>
 //initialize jsPsych
 const jsPsych = initJsPsych({
-  show_progress_bar: true,
-  message_progress_bar: '実験終了まで',
-  auto_update_progress_bar: true,
-  on_finish: function() {
-    window.location = "https://google.com"
-  }
-extensions: [
+  extensions: [
     {
       type: jsPsychExtensionPipe,
       params: {
@@ -39,6 +33,12 @@ extensions: [
       }
     }
   ]
+  show_progress_bar: true,
+  message_progress_bar: '実験終了まで',
+  auto_update_progress_bar: true,
+  on_finish: function() {
+    window.location = "https://google.com"
+  }
 });
 
 const images = ['image/img01.png','image/img02.png','image/img03.png','image/img04.png',
