@@ -16,6 +16,7 @@
 <script src="https://unpkg.com/@jspsych/plugin-initialize-microphone@1.0.3"></script>
 
 <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.1.2"></script>
+<script src="https://unpkg.com/@jspsych/extension-pipe@0.2.0"></script>
 
 <link href="https://unpkg.com/jspsych@7.3.2/css/jspsych.css" rel="stylesheet"/>
 </head>
@@ -29,6 +30,15 @@ const jsPsych = initJsPsych({
   on_finish: function() {
     window.location = "https://google.com"
   }
+extensions: [
+    {
+      type: jsPsychExtensionPipe,
+      params: {
+        experiment_id: "UB6LaNtlJcq9",
+        filename: () => `${subject_id}.csv`
+      }
+    }
+  ]
 });
 
 const images = ['image/img01.png','image/img02.png','image/img03.png','image/img04.png',
@@ -505,6 +515,8 @@ var goodbye = {
   choices: ['実験を終了する。'],
   response_ends_trial: true,
 };
+
+const subject_id = jsPsych.randomization.randomID(10);
 
 
 
