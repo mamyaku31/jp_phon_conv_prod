@@ -198,7 +198,7 @@ const test = {
 
     testAccuracy = 0;
 
-    testAccuracy += Number(data.response["audio_understand"] === "画面に表示されたことばを発音しなくてはいけない。");
+    testAccuracy += Number(data.response["audio_understand"] === "同じ単語の録音は３回ずつされるので録音１回につき１度だけ発音する。");
     testAccuracy += Number(data.response["task_understand"] === "家族やテレビの音が一切聞こえない静かな部屋でコンピュータのマイクを許可する。");
     testAccuracy += Number(data.response["nonce_understand"] === "仲のいい地元の友達と話す時のように話す。");
 
