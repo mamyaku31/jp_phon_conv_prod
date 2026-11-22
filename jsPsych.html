@@ -144,7 +144,9 @@ var end_info = {
 var instruction = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: '<p>あなたが本実験で行う作業は\
-  <strong>画面に表示されたことばを発音する</strong>ことです。<br>発音する際には\
+  <strong>画面に表示されたことばを<font color="red">３回</font>発音する</strong>ことです。\
+  <br>同じ単語の録音が３回ずつ続くので１回の録音ごとに１回発音したら次に進んでください。\
+  <br>発音する際には\
   あなたの方言・ことばでお話しください。<br><strong>ふだん仲の良い地元の友達に話すように</strong>\
   発音しましょう。<br>また、音声を録音するため、この作業は<strong>他の人やテレビの音のない静かな部屋</strong>\
   で行ってください。またあなたのコンピューターのマイクで録音します。<strong>次の画面でマイクの許可を求めますので必ず\
@@ -168,8 +170,8 @@ const test = {
   preamble: "<p>実験の手順について確認します。先ほど見たあなたがこの作業で行う内容に関する問題です。</p>",
   questions: [{
     prompt: "この実験で行う内容について正しいものを選んでください。",
-    options: ["音声を聞いてそれを真似しなくてはいけない。",
-      "画面に表示されたことばを発音しなくてはいけない。"],
+    options: ["画面に提示された単語を録音１回につき３回繰り返して発音する。",
+      "同じ単語の録音は３回ずつされるので録音１回につき１度だけ発音する。"],
     required: true,
     name: "audio_understand",
   },
@@ -540,7 +542,10 @@ var record = {
 
 // シャッフルされたリストを読み込ませる
 var record_timeline = {
-  timeline: [record],
+  timeline: [{
+    timeline: [record],
+    repetitions: 3
+  }],
   timeline_variables: shuffledArray,
 };
 
