@@ -22,8 +22,6 @@
 </head>
   <body></body>
   <script>
-// Generate participant ID before initializing jsPsych
-const subject_id = jsPsych.randomization.randomID(10);
     
 //initialize jsPsych
 const jsPsych = initJsPsych({
@@ -43,6 +41,9 @@ const jsPsych = initJsPsych({
     window.location = "https://google.com"
   }
 });
+
+// Generate participant ID before initializing jsPsych
+const subject_id = jsPsych.randomization.randomID(10);
 
 const images = ['image/bunshou.png', 'image/butaniku.png', 'image/hikouki.png', 'image/hukurou.png', 'image/kutusita.png',
   'image/rirekisho.png', 'image/saiban.png', 'image/sinjitu.png', 'image/sintai.png', 'image/tamasii.png', 'image/tatemono.png',
