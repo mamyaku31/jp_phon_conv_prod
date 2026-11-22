@@ -16,7 +16,7 @@
 <script src="https://unpkg.com/@jspsych/plugin-initialize-microphone@1.0.3"></script>
 
 <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.1.2"></script>
-<script src="https://unpkg.com/@jspsych/extension-pipe@0.2.0"></script>
+<script src="https://unpkg.com/@jspsych/extension-pipe@0.2.0"></script>  
 
 <link href="https://unpkg.com/jspsych@7.3.2/css/jspsych.css" rel="stylesheet"/>
 </head>
@@ -28,7 +28,7 @@ const jsPsych = initJsPsych({
     {
       type: jsPsychExtensionPipe,
       params: {
-        experiment_id: "iCEfEYJ2H4ol",
+        experiment_id: "iCEfEYJ2H4ol", // Change it to proper ID if necessary
         filename: () => `${subject_id}.csv`
       }
     }
@@ -41,9 +41,10 @@ const jsPsych = initJsPsych({
   }
 });
 
-const images = ['image/img01.png','image/img02.png','image/img03.png','image/img04.png',
-'image/img05.png','image/img06.png','image/img07.png','image/img08.png','image/img09.png','image/img10.png',
-'image/img11.png','image/img_tokubetu.png'];
+const images = ['image/bunshou.png', 'image/butaniku.png', 'image/hikouki.png', 'image/hukurou.png', 'image/kutusita.png',
+  'image/rirekisho.png', 'image/saiban.png', 'image/sinjitu.png', 'image/sintai.png', 'image/tamasii.png', 'image/tatemono.png',
+  'image/unmei.png', 'image/wakamono.png', 'image/yuiitu.png', 'image/yuurei.png'
+];
 
 const preload = {
     type: jsPsychPreload,
@@ -140,7 +141,7 @@ var end_info = {
 var instruction = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: '<p>あなたが本実験で行う作業は\
-  <strong>画面に表示されたことばを<font color="red">３回</font>発音する</strong>ことです。<br>発音する際には\
+  <strong>画面に表示されたことばを発音する</strong>ことです。<br>発音する際には\
   あなたの方言・ことばでお話しください。<br><strong>ふだん仲の良い地元の友達に話すように</strong>\
   発音しましょう。<br>また、音声を録音するため、この作業は<strong>他の人やテレビの音のない静かな部屋</strong>\
   で行ってください。またあなたのコンピューターのマイクで録音します。<strong>次の画面でマイクの許可を求めますので必ず\
@@ -164,8 +165,8 @@ const test = {
   preamble: "<p>実験の手順について確認します。先ほど見たあなたがこの作業で行う内容に関する問題です。</p>",
   questions: [{
     prompt: "この実験で行う内容について正しいものを選んでください。",
-    options: ["画面に出てきた単語を１回だけ発音する。",
-      "画面に出てきた単語を３回繰り返し発音する。"],
+    options: ["音声を聞いてそれを真似しなくてはいけない。",
+      "画面に表示されたことばを発音しなくてはいけない。"],
     required: true,
     name: "audio_understand",
   },
@@ -192,7 +193,7 @@ const test = {
 
     testAccuracy = 0;
 
-    testAccuracy += Number(data.response["audio_understand"] === "画面に出てきた単語を３回繰り返し発音する。");
+    testAccuracy += Number(data.response["audio_understand"] === "画面に表示されたことばを発音しなくてはいけない。");
     testAccuracy += Number(data.response["task_understand"] === "家族やテレビの音が一切聞こえない静かな部屋でコンピュータのマイクを許可する。");
     testAccuracy += Number(data.response["nonce_understand"] === "仲のいい地元の友達と話す時のように話す。");
 
@@ -248,7 +249,7 @@ const inst_test = {
 //practice task
 var practice= {
   type: jsPsychHtmlAudioResponse,
-  stimulus: "<img src='img_tokubetu.png' style=\"width:100px; padding: 20px;\"></img><p>「特別」</p>",
+  stimulus: "<img src='image/img_tokubetu.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「特別」</p>",
   recording_duration: 20000,
   allow_playback: true,
   show_done_button: true,
@@ -266,15 +267,15 @@ var item_list = [{
     "type": "osaka",
     "target_filler": "target",
     "no": "01",
-    "item_kana": "あかちゃん",
-    "item": "赤ちゃん",
-    "item_ro": "akachan",
-    "output": "あかちゃん",
-    "julius": "あかちゃん",
+    "item_kana": "ぶんしょう",
+    "item": "文章",
+    "item_ro": "bunshou",
+    "output": "ぶんしょう",
+    "julius": "ぶんしょう",
     "HLLL": "yes",
-    "presence_u": "no"
+    "fst_mora_v": "u"
   },
-  "stimulus": "<img src='image/img01.png' style=\"width:100px; padding: 20px;\"></img><p>「赤ちゃん」</p>"
+  "stimulus": "<img src='image/bunshou.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「ぶんしょう」</p>"
 },
 
   {
@@ -282,31 +283,31 @@ var item_list = [{
     "type": "osaka",
     "target_filler": "target",
     "no": "02",
-    "item_kana": "だいじん",
-    "item": "大臣",
-    "item_ro": "daijin",
-    "output": "だいじん",
-    "julius": "だいじん",
-    "HLLL": "yes",
-    "presence_u": "no",
+    "item_kana": "ぶたにく",
+    "item": "豚肉",
+    "item_ro": "butaniku",
+    "output": "ぶたにく",
+    "julius": "ぶたにく",
+    "HLLL": "no",
+    "fst_mora_v": "u",
   },
-  "stimulus": "<img src='image/img02.png' style=\"width:100px; padding: 20px;\"></img><p>「大臣」</p>"
+  "stimulus": "<img src='image/butaniku.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「豚肉」</p>"
 },
 
   {
   data: {
     "type": "osaka",
-    "target_filler": "target",
+    "target_filler": "filler",
     "no": "03",
-    "item_kana": "ふじさん",
-    "item": "富士山",
-    "item_ro": "fujisan",
-    "output": "ふじさん",
-    "julius": "ふじさん",
-    "HLLL": "yes",
-    "presence_u": "no",
+    "item_kana": "ひこうき",
+    "item": "飛行機",
+    "item_ro": "hikouki",
+    "output": "ひこうき",
+    "julius": "ひこうき",
+    "HLLL": "no",
+    "fst_mora_v": "i",
   },
-  "stimulus": "<img src='image/img03.png' style=\"width:100px; padding: 20px;\"></img><p>「富士山」</p>"
+  "stimulus": "<img src='image/hikouki.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「飛行機」</p>"
 },
 
 {
@@ -314,15 +315,15 @@ var item_list = [{
     "type": "osaka",
     "target_filler": "target",
     "no": "04",
-    "item_kana": "かんぬし",
-    "item": "神主",
-    "item_ro": "kannushi",
-    "output": "かんぬし",
-    "julius": "かんぬし",
-    "HLLL": "yes",
-    "presence_u": "yes"
+    "item_kana": "ふくろう",
+    "item": "ふくろう",
+    "item_ro": "fukurou",
+    "output": "ふくろう",
+    "julius": "ふくろう",
+    "HLLL": "no",
+    "fst_mora_v": "u"
   },
-  "stimulus": "<img src='image/img04.png' style=\"width:100px; padding: 20px;\"></img><p>「神主」</p>"
+  "stimulus": "<img src='image/hukurou.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「ふくろう」</p>"
 },
 
 {
@@ -330,96 +331,96 @@ var item_list = [{
     "type": "osaka",
     "target_filler": "target",
     "no": "05",
-    "item_kana": "めいげつ",
-    "item": "名月",
-    "item_ro": "meigetsu",
-    "output": "めーげつ",
-    "julius": "めーげつ",
-    "HLLL": "yes",
-    "presence_u": "yes",
+    "item_kana": "くつした",
+    "item": "靴下",
+    "item_ro": "kutsushita",
+    "output": "くつした",
+    "julius": "くつした",
+    "HLLL": "no",
+    "fst_mora_v": "u"
   },
-  "stimulus": "<img src='image/img05.png' style=\"width:100px; padding: 20px;\"></img><p>「名月」</p>"
+  "stimulus": "<img src='image/kutusita.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「靴下」</p>"
 },
 
 {
   data: {
     "type": "osaka",
-    "target_filler": "target",
+    "target_filler": "filler",
     "no": "06",
-    "item_kana": "はくじょう",
-    "item": "白状",
-    "item_ro": "hakujoo",
-    "output": "はくじょー",
-    "julius": "はくじょー",
-    "HLLL": "yes",
-    "presence_u": "yes",
+    "item_kana": "りれきしょ",
+    "item": "履歴書",
+    "item_ro": "rirekisho",
+    "output": "りれきしょ",
+    "julius": "りれきしょ",
+    "HLLL": "no",
+    "fst_mora_v": "i",
   },
-  "stimulus": "<img src='image/img06.png' style=\"width:100px; padding: 20px;\"></img><p>「白状」</p>"
+  "stimulus": "<img src='image/rirekisho.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「履歴書」</p>"
 },
 
 //Filler items
 {
   data: {
     "type": "osaka",
-    "target_filler": "filler",
+    "target_filler": "target",
     "no": "07",
-    "item_kana": "かたまり",
-    "item": "かたまり",
-    "item_ro": "katamari",
-    "output": "かたまり",
-    "julius": "かたまり",
-    "HLLL": "no", //HHHH, LHHH
-    "presence_u": "no", 
+    "item_kana": "さいばん",
+    "item": "裁判",
+    "item_ro": "saiban",
+    "output": "さいばん",
+    "julius": "さいばん",
+    "HLLL": "yes", 
+    "fst_mora_v": "a",
   },
-  "stimulus": "<img src='image/img07.png' style=\"width:100px; padding: 20px;\"></img><p>「かたまり」</p>"
+  "stimulus": "<img src='image/saiban.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「裁判」</p>"
 },
 
 {
   data: {
     "type": "osaka",
-    "target_filler": "filler",
+    "target_filler": "target",
     "no": "08",
-    "item_kana": "ともだち",
-    "item": "友達",
-    "item_ro": "tomodachi",
-    "output": "ともだち",
-    "julius": "ともだち",
-    "HLLL": "no", //HHHH, LHHH
-    "presence_u": "no", 
+    "item_kana": "しんじつ",
+    "item": "真実",
+    "item_ro": "shinjitsu",
+    "output": "しんじつ",
+    "julius": "しんじつ",
+    "HLLL": "yes",
+    "fst_mora_v": "i",
   },
-  "stimulus": "<img src='image/img08.png' style=\"width:100px; padding: 20px;\"></img><p>「友達」</p>"
+  "stimulus": "<img src='image/sinjitu.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「真実」</p>"
 },
 
 {
   data: {
     "type": "osaka",
-    "target_filler": "filler",
+    "target_filler": "target",
     "no": "09",
-    "item_kana": "かみなり",
-    "item": "雷",
-    "item_ro": "kaminari",
-    "output": "かみなり",
-    "julius": "かみなり",
-    "HLLL": "no", //HHHL, LHHL
-    "presence_u": "no", 
+    "item_kana": "しんたい",
+    "item": "身体",
+    "item_ro": "shintai",
+    "output": "しんたい",
+    "julius": "しんたい",
+    "HLLL": "yes", 
+    "fst_mora_v": "i", 
   },
-  "stimulus": "<img src='image/img09.png' style=\"width:100px; padding: 20px;\"></img><p>「雷」</p>"
+  "stimulus": "<img src='image/sintai.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「身体」</p>"
 },
 
 {
   data: {
     "type": "osaka",
-    "target_filler": "filler",
+    "target_filler": "target",
     "no": "10",
-    "item_kana": "むらさき",
-    "item": "紫",
-    "item_ro": "murasaki",
-    "output": "むらさき",
-    "julius": "むらさき",
-    "HLLL": "no", //LHLL, LHLL
-    "presence_u": "yes", 
+    "item_kana": "たましい",
+    "item": "魂",
+    "item_ro": "tamashii",
+    "output": "たましい",
+    "julius": "たましい",
+    "HLLL": "yes", 
+    "fst_mora_v": "a", 
   },
-  "stimulus": "<img src='image/img10.png' style=\"width:100px; padding: 20px;\"></img><p>「紫」</p>"
+  "stimulus": "<img src='image/tamasii.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「魂」</p>"
 },
 
 {
@@ -427,15 +428,95 @@ var item_list = [{
     "type": "osaka",
     "target_filler": "filler",
     "no": "11",
-    "item_kana": "べんごし",
-    "item": "弁護士",
-    "item_ro": "bengoshi",
-    "output": "べんごし",
-    "julius": "べんごし",
-    "HLLL": "no", //LLHL, LHHL
-    "presence_u": "no", 
+    "item_kana": "たてもの",
+    "item": "建物",
+    "item_ro": "tatemono",
+    "output": "たてもの",
+    "julius": "たてもの",
+    "HLLL": "no",
+    "fst_mora_v": "a",
   },
-  "stimulus": "<img src='image/img11.png' style=\"width:100px; padding: 20px;\"></img><p>「弁護士」</p>"
+  "stimulus": "<img src='image/tatemono.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「建物」</p>"
+},
+
+{
+  data: {
+    "type": "osaka",
+    "target_filler": "target",
+    "no": "12",
+    "item_kana": "うんめい",
+    "item": "運命",
+    "item_ro": "unmei",
+    "output": "うんめい",
+    "julius": "うんめい",
+    "HLLL": "yes",
+    "fst_mora_v": "u",
+  },
+  "stimulus": "<img src='image/unmei.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「運命」</p>"
+},
+
+{
+  data: {
+    "type": "osaka",
+    "target_filler": "filler",
+    "no": "13",
+    "item_kana": "わかもの",
+    "item": "若者",
+    "item_ro": "wakamono",
+    "output": "わかもの",
+    "julius": "わかもの",
+    "HLLL": "no",
+    "fst_mora_v": "a",
+  },
+  "stimulus": "<img src='image/wakamono.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「若者」</p>"
+},
+
+{
+  data: {
+    "type": "osaka",
+    "target_filler": "target",
+    "no": "14",
+    "item_kana": "ゆいいつ",
+    "item": "唯一",
+    "item_ro": "yuiitsu",
+    "output": "ゆいいつ",
+    "julius": "ゆいいつ",
+    "HLLL": "yes",
+    "fst_mora_v": "u",
+  },
+  "stimulus": "<img src='image/yuiitu.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「唯一」</p>"
+},
+
+{
+  data: {
+    "type": "osaka",
+    "target_filler": "target",
+    "no": "15",
+    "item_kana": "ゆうれい",
+    "item": "幽霊",
+    "item_ro": "yuurei",
+    "output": "ゆうれい",
+    "julius": "ゆうれい",
+    "HLLL": "yes",
+    "fst_mora_v": "u",
+  },
+  "stimulus": "<img src='image/yuurei.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「幽霊」</p>"
+},
+
+{
+  data: {
+    "type": "osaka",
+    "target_filler": "target",
+    "no": "16",
+    "item_kana": "むらさき",
+    "item": "紫",
+    "item_ro": "murasaki",
+    "output": "むらさき",
+    "julius": "むらさき",
+    "HLLL": "no",
+    "fst_mora_v": "u",
+  },
+  "stimulus": "<img src='image/murasaki.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「むらさき」</p>"
 },
 ];
 
@@ -515,8 +596,6 @@ var goodbye = {
   choices: ['実験を終了する。'],
   response_ends_trial: true,
 };
-
-const subject_id = jsPsych.randomization.randomID(10);
 
 
 
