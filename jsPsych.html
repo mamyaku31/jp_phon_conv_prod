@@ -161,6 +161,38 @@ var initialize_mic = {
   button_label: 'マイクを許可した: 次へ進む'
 };
 
+// Record the microphone / recording environment after permission is granted
+const mic_info = {
+  type: jsPsychCallFunction,
+  func: function() {
+    const info = {};
+    try {
+      const recorder = jsPsych.pluginAPI.getMicrophoneRecorder();
+      const track = recorder.stream.getAudioTracks()[0];
+      const s = track.getSettings();
+      info.mic_label = track.label;
+      info.mic_sampleRate = s.sampleRate;
+      info.mic_sampleSize = s.sampleSize;
+      info.mic_channelCount = s.channelCount;
+      info.mic_echoCancellation = s.echoCancellation;
+      info.mic_noiseSuppression = s.noiseSuppression;
+      info.mic_autoGainControl = s.autoGainControl;
+      info.mic_latency = s.latency;
+      info.rec_mimeType = recorder.mimeType;
+      info.rec_audioBitsPerSecond = recorder.audioBitsPerSecond;
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      info.context_sampleRate = ctx.sampleRate;
+      ctx.close();
+      info.browser_ua = navigator.userAgent;
+    } catch (e) {
+      info.mic_error = String(e);
+    }
+    console.log(info);
+    jsPsych.data.addProperties(info); // added to every later row of the CSV
+    return info;
+  }
+};
+
 //Testing understandings of instructions
 
 let testAccuracy = 0;
@@ -631,6 +663,7 @@ const Timeline = [
   instruction,
   inst_test,
   initialize_mic,
+  mic_info,
   { timeline: [practice], repetitions: 3 },
   liaison,
   record_timeline,
