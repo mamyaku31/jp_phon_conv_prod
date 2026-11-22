@@ -22,6 +22,9 @@
 </head>
   <body></body>
   <script>
+// Generate participant ID before initializing jsPsych
+const subject_id = jsPsych.randomization.randomID(10);
+    
 //initialize jsPsych
 const jsPsych = initJsPsych({
    extensions: [
@@ -75,7 +78,9 @@ const welcome = {
 };
 
 // Initializing global variable to store participant information
-window.participant_info = {};
+window.participant_info = {
+  ID: subject_id
+};
 
 const background = {
   type: jsPsychSurveyText,
@@ -87,12 +92,11 @@ const background = {
   ],
   button_label: "次へ",
   on_finish: function(data) {
-    // 修正: 'Account' ではなく 'ID' を使用
-    window.participant_info.ID = data.response.ID;
-    window.participant_info.Age = data.response.Age;
+    window.participant_info.ID = subject_id;
+  window.participant_info.Age = data.response.Age;
 
-    var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
-    jsPsych.setProgressBar(curr_progress_bar_value + (1/70));
+  var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
+  jsPsych.setProgressBar(curr_progress_bar_value + (1/70));
   }
 };
 
