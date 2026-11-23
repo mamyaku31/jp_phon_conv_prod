@@ -72,8 +72,8 @@ var browser_check = {
 //
 const welcome = {
   type: jsPsychHtmlButtonResponse,
-  prompt: "実験に参加いただきありがとうございます。"+
-    "この実験には研究課題の性質上生物学的に女性である人のみ参加できます。"+,
+  stimulus: "<p>実験に参加いただきありがとうございます。</p>"+
+    "<p>この実験には研究課題の性質上生物学的に女性である人のみ参加できます。</p>",
   choices: ["理解した。次へ"],
 };
 
@@ -145,7 +145,7 @@ var end_info = {
 var instruction = {
   type: jsPsychHtmlKeyboardResponse,
   stimulus: "<p>あなたが本実験で行う作業は\
-  <strong>画面に表示されたことばを<font color="red">３回</font>発音する</strong>ことです。</p>"+
+  <strong>画面に表示されたことばを<font color=\"red\"> ３回 </font> 発音する </strong>ことです。</p>"+
   "<p>同じ単語の録音が３回ずつ続くので１回の録音ごとに１回発音したら次に進んでください。</p>"+
   "<p>発音する際にはあなたの方言・ことばでお話しください。<strong>ふだん仲の良い地元の友達に話すように発音しましょう。</p>"+
   "<p>また、音声を録音するため、この作業は<strong>他の人やテレビの音のない静かな部屋</strong>\で行ってください。</p>"+
@@ -285,8 +285,8 @@ const inst_test = {
 //practice task
 var practice= {
   type: jsPsychHtmlAudioResponse,
-  prompt: "<p>単語を１回発音したらボタンを押してください。録音はすでに始まっています。</p>",
-  stimulus: "<img src='image/img_tokubetu.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「特別」</p>",
+  stimulus: "<p>単語を１回発音したらボタンを押してください。録音はすでに始まっています。</p>" +
+    "<img src='image/img_tokubetu.png' style=\"max-height:250px; max-width:400px;\"></img><p style=\"font-size:36px;\">「特別」</p>",
   recording_duration: 20000,
   allow_playback: true,
   show_done_button: true,
@@ -571,7 +571,6 @@ var shuffledArray = jsPsych.randomization.shuffle(item_list);
 
 var record = {
   type: jsPsychHtmlAudioResponse,
-  prompt: "<p>単語を１回発音したらボタンを押してください。録音はすでに始まっています。</p>",
   stimulus: jsPsych.timelineVariable("stimulus"),
   data: jsPsych.timelineVariable('data'),
   recording_duration: 20000,
@@ -658,7 +657,7 @@ const Timeline = [
   browser_check,
   welcome,
   background,
-  gender,
+  //gender,
   birthplace,
   end_info,
   instruction,
