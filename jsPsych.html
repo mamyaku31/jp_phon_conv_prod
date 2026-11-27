@@ -32,7 +32,9 @@ const jsPsych = initJsPsych({
       type: jsPsychExtensionPipe,
       params: {
         experiment_id: "iCEfEYJ2H4ol", // Change it to proper ID if necessary
-        filename: () => `${subject_id}.csv`
+        filename: () => `${subject_id}.csv`,
+        waiting_message: "データを保存しています。タブを閉じないでください。",
+        success_message: "データの保存が完了しました。",
       }
     }
   ],
